@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>National Parks Search</title>
-    <!-- Add Bootstrap CSS link -->
+    <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Add your custom CSS file -->
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -32,32 +31,57 @@
         </div>
     </nav>
 
+
     <section class="container mt-4">
         <h2>Explore National Parks</h2>
         <p>This page allows you to search and explore various national parks.</p>
 
-        <!-- Add your search functionality and park listings here -->
-        <div class="park-list">
-            <!-- Example park listing -->
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Abraham Lincoln Birthplace National Historical Park</h5>
-                    <p class="card-text">Location: Hodgenville, Kentucky</p>
-                    <a href="#" class="btn btn-primary">Learn More</a>
-                </div>
-            </div>
-            <!-- Repeat similar card structures for other parks -->
+        <!-- Search by Location -->
+        <div class="form-group">
+            <label for="locationSearch">Search by Location:</label>
+            <select class="form-control" id="locationSearch">      
+                <!-- Options will be dynamically populated based on the location array -->
+                ${locationsArray.map(location => `<option value="${location}">${location}</option>`).join('')}
+            </select>
+        </div>
+
+        <!-- Search by Park Type -->
+        <div class="form-group">
+            <label for="parkTypeSearch">Search by Park Type:</label>
+            <select class="form-control" id="parkTypeSearch">
+                <!-- Populate dropdown with park types from parkTypeData.js -->
+                ${parkTypesArray.map(parkType => `<option value="${parkType}">${parkType}</option>`).join('')}
+            </select>
+        </div>
+        <button id="searchButton">Search</button>
+
+        <!-- Display search results here -->
+        <div id="searchResults" class="mt-4">
+            <!-- Results will be dynamically populated based on user selections -->
+        </div>
+
+        <!-- Display detailed information about the selected park -->
+        <div id="parkDetails" class="mt-4">
+            <!-- Details will be dynamically populated based on user selections -->
+
         </div>
     </section>
+
 
     <footer class="bg-dark text-white text-center p-3 mt-4">
         <p>&copy; 2023 My National Parks Website</p>
     </footer>
 
-    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <!-- Bootstrap JS scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <!-- JavaScript files-->
+    <script src="scripts/locationData.js"></script>
+    <script src="scripts/mountainData.js"></script>
+    <script src="scripts/nationalParkData.js"></script>
+    <script src="scripts/parkTypeData.js"></script>
+    <script src="scripts/search.js" defer></script>
 </body>
 </html>
