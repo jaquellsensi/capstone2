@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchResultsArray = nationalParksArray.filter(park => {
             const parkName = park.LocationName.toUpperCase();
             const nameIncludesType = parkTypesArray.some(type => parkName.includes(type.toUpperCase()));
-            
+
             return (
                 (selectedLocation === '' || park.State === selectedLocation) &&
                 (selectedParkType === '' || nameIncludesType)
@@ -55,12 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const list = document.createElement('ul');
             results.forEach(result => {
                 const listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    <strong>${result.LocationName}</strong><br>
-                    <em>${result.City}, ${result.State}</em><br>
-                    <span>Phone: ${result.Phone}</span><br>
-                    <span>Visit: <a href="${result.Visit}" target="_blank">${result.Visit}</a></span>
-                `;
+                listItem.textContent = result.LocationName;
                 list.appendChild(listItem);
             });
             searchResults.appendChild(list);
@@ -68,5 +63,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event listener for the search button
-    searchButton.addEventListener('click', filterParks);
+    searchButton.addEventListener('click', () => {
+        const selectedLocation = locationDropdown.value;
+        const selectedParkType = parkTypeDropdown.value.toUpperCase();
+
+        const searchResultsArray = nationalParksArray.filter(park => {
+            const parkName = park.LocationName.toUpperCase();
+            const nameIncludesType = parkTypesArray.some(type => parkName.includes(type.toUpperCase()));
+
+            return (
+                (selectedLocation === '' || park.State === selectedLocation) &&
+                (selectedParkType === '' || nameIncludesType)
+            );
+        });
+
+        // Display search results
+        displayResults(searchResultsArray);
+    });
 });
+
+
+

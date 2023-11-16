@@ -1,12 +1,11 @@
-/**
-body {
-    font-family: 'Arial', sans-serif;
-}
-
-section {
-    margin: 20px 0;
-}
-
-footer {
-    margin-top: 20px;
+.footer {
+    background: rgba(255, 255, 255, 0.8); /* Transparent white background */
+    backdrop-filter: blur(10px); /* Add blur for glassmorphism effect */
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Border for separation */
+    position: fixed; /* Keep the footer at the bottom */
+    width: 100%; /* Full width */
+    text-align: center;
+    padding: 10px; /* Add padding for better visibility */
+    bottom: 0; /* Stick to the bottom */
+    z-index: 1000; /* Ensure the footer is above other elements */
 }
