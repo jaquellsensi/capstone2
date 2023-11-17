@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const locationDropdown = document.getElementById('locationSearch');
     const parkTypeDropdown = document.getElementById('parkTypeSearch');
@@ -26,13 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to filter parks based on user input
     function filterParks() {
         const selectedLocation = locationDropdown.value;
-        const selectedParkType = parkTypeDropdown.value.toUpperCase(); // Convert to lowercase for case-insensitive comparison
-
+        const selectedParkType = parkTypeDropdown.value; // Convert to lowercase for case-insensitive comparison
+        
         // Perform search
-        const searchResultsArray = nationalParksArray.filter(park => {
-            const parkName = park.LocationName.toUpperCase();
-            const nameIncludesType = parkTypesArray.some(type => parkName.includes(type.toUpperCase()));
-
+            const searchResultsArray = nationalParksArray.filter(park => {
+            const parkName = park.LocationName;
+            const nameIncludesType = parkTypesArray.some(type => parkName.includes(type.toLowerCase()));
+                
             return (
                 (selectedLocation === '' || park.State === selectedLocation) &&
                 (selectedParkType === '' || nameIncludesType)
@@ -81,6 +82,3 @@ document.addEventListener('DOMContentLoaded', () => {
         displayResults(searchResultsArray);
     });
 });
-
-
-

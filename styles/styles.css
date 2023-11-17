@@ -1,11 +1,56 @@
-.footer {
-    background: rgba(255, 255, 255, 0.8); /* Transparent white background */
-    backdrop-filter: blur(10px); /* Add blur for glassmorphism effect */
-    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Border for separation */
-    position: fixed; /* Keep the footer at the bottom */
-    width: 100%; /* Full width */
+/* Mountains page styles */
+
+/*body {
+    background-color:#8FBF7F;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
     text-align: center;
-    padding: 10px; /* Add padding for better visibility */
-    bottom: 0; /* Stick to the bottom */
-    z-index: 1000; /* Ensure the footer is above other elements */
+    margin: 0;
 }
+
+.container {
+    margin-bottom: 20px;
+}
+
+/* Apply glassmorphism effect to certain elements */
+/*#mountainDropdown,
+#mountainInfo {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    margin-top: 20px;
+}
+
+/* Maintain a consistent text color */
+/*#mountainInfo h2,
+#mountainInfo p {
+    color: #fff; /* White text color */
+/*}
+
+/* Apply a similar button style as used in the main page */
+/*btn-mountain {
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+.btn-mountain:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/*footer {
+    background: rgba(255, 255, 255, 0.8); /* Transparent white background */
+ /*   backdrop-filter: blur(10px); /* Add blur for glassmorphism effect */
+ /*   border-top: 1px solid rgba(255, 255, 255, 0.2); /* Border for separation */
+   /* position: absolute; /* Keep the footer at the bottom */
+/*    width: 100%; /* Full width */
+  /*  text-align: center;
+ /*   padding: 10px; /* Add padding for better visibility */
+   /* bottom: 0; /* Stick to the bottom */
+/*}
