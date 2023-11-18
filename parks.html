@@ -31,6 +31,49 @@
             </ul>
         </div>
     </nav>
+    <style>
+
+    body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #3498db;
+            background-size: cover;
+            background-position: center center;
+            height: 100vh;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+        }
+    
+
+        #locationSearch,
+        #parkTypeSearch {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            margin-top: 10px;
+            color: #000; /* Change this color to your desired text color */
+        }
+
+footer {
+    background: rgba(255, 255, 255, 0.1); /* Transparent white background */
+    backdrop-filter: blur(10px); /* Add blur for glassmorphism effect */
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Border for separation */
+    position: fixed; /* Keep the footer at the bottom */
+    width: 100%; /* Full width */
+    text-align: center;
+    padding: 10px; /* Add padding for better visibility */
+    bottom: 0; /* Stick to the bottom */
+    z-index: 1000; /* Ensure the footer is above other elements */
+    color: #000; /* Change this color to your desired text color */
+}
+
+
+
+
+    </style>
 
 
     <section class="container mt-4">
@@ -42,7 +85,7 @@
             <label for="locationSearch">Search by Location:</label>
             <select class="form-control" id="locationSearch">      
                 <!-- Options will be dynamically populated based on the location array -->
-                ${locationsArray.map(location => `<option value="${location}">${location}</option>`).join('')}
+                ${locationsArray.map(location => `<option value="">Select Location</option>`).join('')}
             </select>
         </div>
 
@@ -51,7 +94,7 @@
             <label for="parkTypeSearch">Search by Park Type:</label>
             <select class="form-control" id="parkTypeSearch">
                 <!-- Populate dropdown with park types from parkTypeData.js -->
-                ${parkTypesArray.map(parkType => `<option value="${parkType}">${parkType}</option>`).join('')}
+                ${parkTypesArray.map(parkType => `<option value="">Select Park Type</option>`).join('')}
             </select>
         </div>
         <button id="searchButton">Search</button>
@@ -69,7 +112,7 @@
     </section>
 
 
-    <footer class="bg-dark text-white text-center p-3 mt-4">
+    <footer class="text-center mt-4">
         <p>&copy; 2023 My National Parks Website</p>
     </footer>
 

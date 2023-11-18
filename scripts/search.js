@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const locationDropdown = document.getElementById('locationSearch');
     const parkTypeDropdown = document.getElementById('parkTypeSearch');
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Perform search
             const searchResultsArray = nationalParksArray.filter(park => {
             const parkName = park.LocationName;
-            const nameIncludesType = parkTypesArray.some(type => parkName.includes(type.toLowerCase()));
+            const nameIncludesType = parkTypesArray.some(type => parkName.includes);
                 
             return (
                 (selectedLocation === '' || park.State === selectedLocation) &&
@@ -47,10 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to display search results
     function displayResults(results) {
         // Clear previous results
-        searchResults.innerHTML = '';
+        searchResults.innerText = '';
 
         if (results.length === 0) {
-            searchResults.innerHTML = '<p>No results found.</p>';
+            searchResults.innerText = 'No results found.';
         } else {
             // Display results in a list
             const list = document.createElement('ul');
@@ -66,11 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener for the search button
     searchButton.addEventListener('click', () => {
         const selectedLocation = locationDropdown.value;
-        const selectedParkType = parkTypeDropdown.value.toUpperCase();
+        const selectedParkType = parkTypeDropdown.value;
 
         const searchResultsArray = nationalParksArray.filter(park => {
             const parkName = park.LocationName.toUpperCase();
-            const nameIncludesType = parkTypesArray.some(type => parkName.includes(type.toUpperCase()));
+            const nameIncludesType = parkTypesArray.some(type => parkName.includes(selectedParkType.toUpperCase()));
 
             return (
                 (selectedLocation === '' || park.State === selectedLocation) &&
