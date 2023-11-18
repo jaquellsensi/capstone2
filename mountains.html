@@ -12,13 +12,21 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: #8FBF7F;
+            background-image: url('images/bestmountainpic.jpg');
             background-size: cover;
             background-position: center center;
             height: 100vh;
             text-align: center;
             margin: 0;
             color: #fff;
+        }
+
+        body select.form-control {
+                    color: #000; /* Change this color to your desired text color */
+            }
+
+        select option {
+            color: #000;
         }
 
         .container {
@@ -29,13 +37,14 @@
 
         /* Apply glassmorphism effect to certain elements */
         #mountainDropdown,
-        #mountainInfo {
+        #mountainInfo
+         {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
             backdrop-filter: blur(10px);
             margin-top: 20px;
-            color: #0d0c0c;
+            color: #000;
         }
 
         /* Apply a similar button style as used in the main page */
@@ -62,11 +71,21 @@
             padding: 10px;
             color: black;
         }
+
+        header {
+            background: rgba(255, 255, 255, 0.3); /* Transparent white background */
+            backdrop-filter: blur(10px); /* Add blur for glassmorphism effect */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Border for separation */
+            text-align: center;
+            padding: 10px;
+            color: #fff;
+        }
+
     </style>
 </head>
 <body>
 
-    <header class="bg-dark text-white text-center p-3">
+    <header class="text-center p-3">
         <h1>Mountains Information</h1>
     </header>
 
@@ -91,11 +110,14 @@
         <h2>Discover Majestic Mountains</h2>
         <p>This page provides information about various mountains and their characteristics.</p>
 
-        <!-- Add a dropdown for mountain selection -->
+      <!-- Add a dropdown for mountain selection -->
         <label for="mountainDropdown">Select a mountain:</label>
         <select id="mountainDropdown" class="form-control" onchange="displayMountainInfo()">
+            <option value="">Select Mountain</option>
             <!-- The options will be dynamically populated using JavaScript -->
+            ${mountainsArray.map(mountain => `<option value="">${mountain.name}</option>`).join('')}
         </select>
+
 
         <div id="mountainInfo">
             <!-- Mountain information will be displayed here -->

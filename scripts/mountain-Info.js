@@ -1,5 +1,4 @@
 // Function to populate the dropdown with mountain names
-
 function populateDropdown() {
     const dropdown = document.getElementById('mountainDropdown');
     mountainsArray.forEach(mountain => {
@@ -8,6 +7,7 @@ function populateDropdown() {
         dropdown.add(option);
     });
 }
+
 
 // Function to display mountain information
 function displayMountainInfo() {
@@ -27,7 +27,7 @@ function displayMountainInfo() {
         `;
     } else {
         // If no mountain is selected, clear the #mountainInfo div
-        document.getElementById('mountainInfo').innerHTML = '';
+        document.getElementById('mountainInfo').innerText = '';
     }
 }
 

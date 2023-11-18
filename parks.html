@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <header class="bg-dark text-white text-center p-3">
+    <header class="text-center p-3">
         <h1>National Parks Search</h1>
     </header>
 
@@ -37,13 +37,18 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: #3498db;
+            background-image: url('images/bestparkpic2.jpg');
             background-size: cover;
             background-position: center center;
             height: 100vh;
             text-align: center;
             margin: 0;
             color: #fff;
+
+            /* Improve image rendering */
+            image-rendering: auto;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
         }
     
 
@@ -70,6 +75,33 @@ footer {
     color: #000; /* Change this color to your desired text color */
 }
 
+header {
+    background: rgba(255, 255, 255, 0.2); /* Transparent white background */
+    backdrop-filter: blur(10px); /* Add blur for glassmorphism effect */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Border for separation */
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+}
+
+/* Add this to your existing styles or modify as needed */
+
+#searchResults{
+    background: rgba(255, 255, 255, 0.1); /* Transparent white background */
+    backdrop-filter: blur(10px); /* Add blur for glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Border for separation */
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#searchResults h3 {
+    color: #fff;
+}
+
+#searchResults p {
+    color: #fff;
+}
 
 
 
@@ -97,7 +129,7 @@ footer {
                 ${parkTypesArray.map(parkType => `<option value="">Select Park Type</option>`).join('')}
             </select>
         </div>
-        <button id="searchButton">Search</button>
+        <button class="btn btn-outline-light" id="searchButton">Search</button>
 
         <!-- Display search results here -->
         <div id="searchResults" class="mt-4">
