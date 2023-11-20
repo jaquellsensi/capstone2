@@ -21,6 +21,26 @@
             color: #fff;
         }
 
+        /* Apply glassmorphism effect to certain elements */
+        #mountainDropdown,
+        #mountainInfo
+         {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin-top: 10px;
+            color: #000;
+
+            option[value=""][disabled] {
+                color: #000;
+            }
+        }
+
+        #mountainDropdown:focus {
+            color: black;
+        }
+
         body select.form-control {
                     color: #000; /* Change this color to your desired text color */
             }
@@ -35,17 +55,7 @@
             margin-bottom: 50px; /* Adjust as needed */
         }
 
-        /* Apply glassmorphism effect to certain elements */
-        #mountainDropdown,
-        #mountainInfo
-         {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            margin-top: 20px;
-            color: #000;
-        }
+        
 
         /* Apply a similar button style as used in the main page */
         .btn-mountain {
@@ -111,11 +121,10 @@
         <p>This page provides information about various mountains and their characteristics.</p>
 
       <!-- Add a dropdown for mountain selection -->
-        <label for="mountainDropdown">Select a mountain:</label>
         <select id="mountainDropdown" class="form-control" onchange="displayMountainInfo()">
-            <option value="">Select Mountain</option>
+            <option value="" disabled selected>Select Mountain</option>
             <!-- The options will be dynamically populated using JavaScript -->
-            ${mountainsArray.map(mountain => `<option value="">${mountain.name}</option>`).join('')}
+           
         </select>
 
 
@@ -123,9 +132,8 @@
             <!-- Mountain information will be displayed here -->
         </div>
 
-        <!-- Apply a similar button style as used in the main page -->
-        <button class="btn-mountain" onclick="exploreMountain()">Explore More</button>
-
+        <!-- Add the reset button -->
+        <button class="btn btn-outline-light" onclick="resetPage()">Reset</button>
 
     </section>
 

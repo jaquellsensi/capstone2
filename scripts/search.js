@@ -2,10 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const locationDropdown = document.getElementById('locationSearch');
     const parkTypeDropdown = document.getElementById('parkTypeSearch');
     const searchButton = document.getElementById('searchButton');
+    const resetButton = document.getElementById('resetButton');
     const searchResults = document.getElementById('searchResults');
 
     // Extract unique states from nationalParksArray
-    const uniqueStates = [...new Set(nationalParksArray.map(park => park.State))];
+    const uniqueStates = [...new Set(nationalParksArray.map(park => park.State))].sort();
 
     // Populate the Location dropdown with unique states
     uniqueStates.forEach(state => {
@@ -15,24 +16,38 @@ document.addEventListener('DOMContentLoaded', () => {
         locationDropdown.appendChild(option);
     });
 
+    const sortedParkTypes = [...new Set(parkTypesArray)].sort();
+
     // Populate the Park Type dropdown with options from parkTypesArray
-    parkTypesArray.forEach(parkType => {
+    sortedParkTypes.forEach(parkType => {
         const option = document.createElement('option');
         option.value = parkType;
         option.textContent = parkType;
         parkTypeDropdown.appendChild(option);
     });
 
+    // Event listener for the search button
+    searchButton.addEventListener('click', () => {
+        filterParks();
+    });
+
+    // Event listener for the reset button
+    resetButton.addEventListener('click', () => {
+        locationDropdown.value = ''; // Reset location dropdown
+        parkTypeDropdown.value = ''; // Reset park type dropdown
+        searchResults.innerText = ''; // Clear results
+    });
+
     // Function to filter parks based on user input
     function filterParks() {
         const selectedLocation = locationDropdown.value;
         const selectedParkType = parkTypeDropdown.value; // Convert to lowercase for case-insensitive comparison
-        
+
         // Perform search
-            const searchResultsArray = nationalParksArray.filter(park => {
-            const parkName = park.LocationName;
+        const searchResultsArray = nationalParksArray.filter(park => {
+            const parkName = park.LocationName.toLowerCase(); 
             const nameIncludesType = parkTypesArray.some(type => parkName.includes);
-                
+
             return (
                 (selectedLocation === '' || park.State === selectedLocation) &&
                 (selectedParkType === '' || nameIncludesType)
@@ -46,38 +61,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to display search results
     function displayResults(results) {
         // Clear previous results
-        searchResults.innerText = '';
+        const searchResultsContainer = document.getElementById('searchResults');
+        searchResultsContainer.innerText = '';
 
         if (results.length === 0) {
-            searchResults.innerText = 'No results found.';
-        } else {
-            // Display results in a list
-            const list = document.createElement('ul');
-            results.forEach(result => {
-                const listItem = document.createElement('li');
-                listItem.textContent = result.LocationName;
-                list.appendChild(listItem);
-            });
-            searchResults.appendChild(list);
+            const noResultsCard = createCard('No results found.');
+            searchResultsContainer.appendChild(noResultsCard);
+            return;
         }
+
+        // Loop through parks and create cards
+        results.forEach(park => {
+            const card = createCard(park);
+            searchResultsContainer.appendChild(card);
+        });
     }
 
-    // Event listener for the search button
-    searchButton.addEventListener('click', () => {
-        const selectedLocation = locationDropdown.value;
-        const selectedParkType = parkTypeDropdown.value;
+    // Function to create a card
+    function createCard(park) {
+        const card = document.createElement('div');
+        card.classList.add('card', 'mb-3');
 
-        const searchResultsArray = nationalParksArray.filter(park => {
-            const parkName = park.LocationName.toUpperCase();
-            const nameIncludesType = parkTypesArray.some(type => parkName.includes(selectedParkType.toUpperCase()));
+        // Use Bootstrap card components
+        card.innerHTML = `
+            <div class="card-body">
+                <h5 class="card-title">${park.LocationName}</h5>
+                <p class="card-text">State: ${park.State}</p>
+                <p class="card-text">City: ${park.City}</p>
+                <p class="card-text">Address: ${park.Address}</p>
+                <p class="card-text">Phone: ${park.Phone}</p>
+                ${park.Visit ? `<a href="${park.Visit}" target="_blank" class="btn btn-primary">Visit</a>` : ''}
+            </div>
+        `;
 
-            return (
-                (selectedLocation === '' || park.State === selectedLocation) &&
-                (selectedParkType === '' || nameIncludesType)
-            );
-        });
-
-        // Display search results
-        displayResults(searchResultsArray);
-    });
+        return card;
+    }
 });

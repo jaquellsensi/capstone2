@@ -55,7 +55,7 @@
         #locationSearch,
         #parkTypeSearch {
             background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
+            padding: 5px;
             border-radius: 10px;
             backdrop-filter: blur(10px);
             margin-top: 10px;
@@ -95,12 +95,12 @@ header {
     padding: 10px;
 }
 
-#searchResults h3 {
-    color: #fff;
+#searchResults h5 {
+    color: #000;
 }
 
 #searchResults p {
-    color: #fff;
+    color: #000;
 }
 
 
@@ -131,8 +131,10 @@ header {
         </div>
         <button class="btn btn-outline-light" id="searchButton">Search</button>
 
+        <button class="btn btn-outline-light" id="resetButton">Reset</button>
+
         <!-- Display search results here -->
-        <div id="searchResults" class="mt-4">
+        <div id="searchResults" class="card-container mt-4">
             <!-- Results will be dynamically populated based on user selections -->
         </div>
 
@@ -145,7 +147,7 @@ header {
 
 
     <footer class="text-center mt-4">
-        <p>&copy; 2023 My National Parks Website</p>
+        <p>&copy; 2023 Embark Parks</p>
     </footer>
 
     <!-- Bootstrap JS scripts -->

@@ -8,6 +8,7 @@ const nationalParksArray = [
     ZipCode: 42748,
     Phone: "(270) 358-3137",
     Fax: "(270) 358-3874",
+    Image: "images/Abepark.jpg",
     Latitude: 37.535671,
     Longitude: -85.7340637,
     Location: {
