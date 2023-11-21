@@ -16,10 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
         locationDropdown.appendChild(option);
     });
 
-    const sortedParkTypes = [...new Set(parkTypesArray)].sort();
 
     // Populate the Park Type dropdown with options from parkTypesArray
-    sortedParkTypes.forEach(parkType => {
+    parkTypesArray.forEach(parkType => {
         const option = document.createElement('option');
         option.value = parkType;
         option.textContent = parkType;
@@ -41,16 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to filter parks based on user input
     function filterParks() {
         const selectedLocation = locationDropdown.value;
-        const selectedParkType = parkTypeDropdown.value; // Convert to lowercase for case-insensitive comparison
+        const selectedParkType = parkTypeDropdown.value; 
 
         // Perform search
         const searchResultsArray = nationalParksArray.filter(park => {
-            const parkName = park.LocationName.toLowerCase(); 
-            const nameIncludesType = parkTypesArray.some(type => parkName.includes);
+            const parkName = park.LocationName.toUpperCase();
+            const namesIncludesType = parkTypesArray.includes(selectedParkType);
 
             return (
                 (selectedLocation === '' || park.State === selectedLocation) &&
-                (selectedParkType === '' || nameIncludesType)
+                (selectedParkType === '' || namesIncludesType)
             );
         });
 
@@ -82,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.classList.add('card', 'mb-3');
 
-        // Use Bootstrap card components
+        // Bootstrap card
         card.innerHTML = `
             <div class="card-body">
                 <h5 class="card-title">${park.LocationName}</h5>
